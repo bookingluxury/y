@@ -7541,17 +7541,6 @@ body {
     });
 }
 
-  // Vô hiệu hóa chuột phải
-  document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-  });
-
-  // Vô hiệu hóa phím F12 và các tổ hợp phím kiểm tra
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
-      e.preventDefault();
-    }
-  });
 
   </script>
 
@@ -7563,12 +7552,123 @@ body {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>DIAMOND CLUB</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+  />
+    <style>
+        
+    
+            #clock {
+            font-size: 15px;
+            text-align: center;
+            font-family: "Poppins", sans-serif;    
+            color: #2bff00; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+            padding: 10px;
+            border-radius: 5px;
+            position: fixed;  /* Giữ đồng hồ cố định */
+            top: 25px;        /* Căn cách lề trên */
+            left: 20px;       /* Căn cách lề trái */
+            z-index: 9999; 
+            border: 3px solid #C0C0C0; /* Viền vàng */
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+              
+        }
+             #clock:hover {
+                color: #ff0000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+              
+      transform: scale(1.05); /* Phóng to nhẹ khi hover */
+
+
+        }
+
+#timezone {
+    font-size: 16px;
+    color: #ff0000/* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+    text-align: center;
+    font-family: 'Poppins", sans-serif;
+    margin-top: 5px;
+     border-radius: 5px;
+    
+        }
+    </style>
+</head>
+<body>
+    <div class="copyright-section">
+        <p>Copyright © 2021. All rights reserved
+        </p>
+    </div>
+
+    <div id="clock"></div>
+    <div id="timezone"></div>
+
+    <script>
+        // Hàm cập nhật đồng hồ theo múi giờ Hàn Quốc
+        function updateClock() {
+            var now = new Date();
+
+            // Lấy thời gian ở múi giờ Hàn Quốc (Asia/Seoul)
+            var options = {
+                timeZone: 'Australia/Melbourne',  // Múi giờ Melbourne
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false // Sử dụng định dạng 24 giờ
+            };
+
+            // Lấy múi giờ hiện tại
+            var timeString = new Intl.DateTimeFormat('vi-VN', options).format(now);
+
+            // Hiển thị thời gian và múi giờ
+            document.getElementById('clock').innerHTML = timeString;
+            document.getElementById('timezone').innerHTML = "Australia";
+        // Xóa dòng liên quan đến múi giờ
+document.getElementById('timezone').innerHTML = "Australia";
+
+        }
+
+        // Cập nhật đồng hồ mỗi giây
+        setInterval(updateClock, 1000);
+        updateClock();
+   
+        
+    </script>
+
+     <style>  
+.copyright-section {
+
+  border-radius: 10px; /* Bo tròn góc nút */ 
+  color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+
+    text-align: center; /* Canh giữa nội dung */
+    font-size: 15px; /* Kích thước chữ nhỏ vừa */
+    
+    font-family: 'Poppins", sans-serif; /* Đặt font đơn giản */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  
+}
+
+
+</style>
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>LUXURY GIRL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        @keyframes scrollLeft {
+      @keyframes scrollLeft {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
@@ -7697,17 +7797,16 @@ const notifications = [
     "Khách hàng Nguyễn Văn Lâm tại Ballarat, VIC đã gia nhập. Đừng bỏ lỡ cơ hội trải nghiệm ngay hôm nay!",
 ];
 
- function updateNotification() {
+function updateNotification() {
         const notification = document.getElementById('notification');
         const randomIndex = Math.floor(Math.random() * notifications.length);
         notification.textContent = notifications[randomIndex];
     }
 
-    // Cập nhật nội dung thông báo mỗi 30 giây
+    // Cập nhật nội dung thông báo mỗi 20 giây
     window.addEventListener('load', () => {
         updateNotification();
-        setInterval(updateNotification, 10000); // 20 giây
-        
+        setInterval(updateNotification, 20000); // 20 giây
     });
     // Vô hiệu hóa chuột phải
   document.addEventListener("contextmenu", function (e) {
